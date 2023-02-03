@@ -22,7 +22,7 @@
             <!-- Manager -->
             <div class="bg-white m-32 rounded">
                 <!-- Top -->
-                <div>
+                <div class="bg-emerald-500">
                     <!-- Name -->
                     <div>
                         <h2 class="text-3xl">${manager.name}</h2>
@@ -37,15 +37,13 @@
                 <!-- Bottom -->
                 <div>
                     <!-- ID -->
-                    <div></div>
+                    <div>ID: ${manager.id}</div>
                     <!-- Email -->
-                    <div></div>
+                    <div>Email: <a href="mailto:${manager.email}">${manager.email}</a></div>
                     <!-- Office # -->
-                    <div></div>
+                    <div>Office #: ${manager.officeNumber}</div>
                 </div>
             </div>
-            
-
         </div>
     </main>
     
