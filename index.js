@@ -1,37 +1,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Manager = require("./lib/manager");
-const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
-const generatePage = require("./lib/generatePage.js");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const generatePage = require("./lib/pagegen");
 const path = require("path");
-const OUTPUT_DIR = path.resolve(__dirname, "public");
+const OUTPUT_DIR = path.resolve(__dirname, "disp");
 const outputPath = path.join(OUTPUT_DIR, "index.html");
 const teamMembers = [];
-
-const addEmployee = () => {
-    return inquirer.prompt([
-        {
-            type: "list",
-            name: "roleChoice",
-            message: "Please choose an option",
-            choices: ["Add Engineer", "Add Intern", "Team Complete"]
-        }
-    ])
-    .then(userChoice => {
-        switch (userChoice.roleChoice) {
-            case "Add Engineer":
-                engineerQs();
-                break;
-            case "Add Intern":
-                internQs();
-                break;
-            default:
-                teamBuilder();
-
-        }
-    })
-}
 
 const managerQs = () => {
     return inquirer.prompt([
@@ -61,6 +37,30 @@ const managerQs = () => {
         )
         teamMembers.push(manager);
         addEmployee();
+    })
+}
+
+const addEmployee = () => {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "roleChoice",
+            message: "Please choose an option",
+            choices: ["Add Engineer", "Add Intern", "Team Complete"]
+        }
+    ])
+    .then(userChoice => {
+        switch (userChoice.roleChoice) {
+            case "Add Engineer":
+                engineerQs();
+                break;
+            case "Add Intern":
+                internQs();
+                break;
+            default:
+                teamBuilder();
+
+        }
     })
 }
 
